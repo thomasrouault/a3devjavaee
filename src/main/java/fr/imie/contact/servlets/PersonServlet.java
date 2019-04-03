@@ -1,6 +1,6 @@
 package fr.imie.contact.servlets;
 
-import fr.imie.contact.entities.DateUtils;
+import fr.imie.contact.DateUtils;
 import fr.imie.contact.entities.Person;
 import fr.imie.contact.repositories.PersonRepository;
 
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet("/person/*")

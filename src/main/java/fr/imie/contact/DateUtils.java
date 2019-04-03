@@ -1,4 +1,4 @@
-package fr.imie.contact.entities;
+package fr.imie.contact;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

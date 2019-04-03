@@ -15,6 +15,7 @@ public class Person {
 
     private String email;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate birthDate;
 
     public Person() {
