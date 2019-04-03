@@ -29,7 +29,7 @@
             <td><input name="firstName" /></td>
             <td><input name="lastName" /></td>
             <td><input name="email" /></td>
-            <td><input name="birthdate" /></td>
+            <td><input name="birthDate" /></td>
             <td><input type="submit" /></td>
         </tr>
     <c:forEach var="person" items="${persons}" >
