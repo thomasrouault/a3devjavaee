@@ -39,6 +39,8 @@
             <td>${person.lastName}</td>
             <td>${person.email}</td>
             <td>${person.birthDate}</td>
+            <td>Modifier</td>
+            <td>Supprimer</td>
         </tr>
     </c:forEach>
     </tbody>

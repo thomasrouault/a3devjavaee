@@ -23,7 +23,7 @@ public class PersonServlet extends HttpServlet {
 
         List<Person> persons = repository.findAll();
         request.setAttribute("persons", persons);
-        request.getRequestDispatcher("WEB-INF/views/person.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/person.jsp").forward(request, response);
     }
 
 }
