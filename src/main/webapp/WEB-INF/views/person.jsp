@@ -12,7 +12,8 @@
     <title></title>
 </head>
 <body>
-<form method="post" action="person/save">
+<c:url var="save" value="/person/save" />
+<form method="post" action="${save}">
 <table>
     <thead>
         <tr>
