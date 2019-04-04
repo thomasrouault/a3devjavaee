@@ -17,7 +17,15 @@ public class BankAccountRepository {
     }
 
     public void save(BankAccount entity) {
-        em.persist(entity);
+        if (entity.getId() == null) {
+            em.persist(entity);
+        }else {
+            em.merge(entity);
+        }
+    }
+
+    public BankAccount findById(Integer id) {
+        return em.find(BankAccount.class, id);
     }
 
 }

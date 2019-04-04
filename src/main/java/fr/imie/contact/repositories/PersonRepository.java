@@ -20,4 +20,12 @@ public class PersonRepository {
         em.persist(person);
     }
 
+    public Person findById(Integer id) {
+        return em.find(Person.class, id);
+    }
+
+    public void deleteById(Integer id) {
+        Person person = findById(id);
+        em.remove(person);
+    }
 }

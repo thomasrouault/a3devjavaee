@@ -12,8 +12,8 @@
     <title></title>
 </head>
 <body>
-<c:url var="save" value="/person/save" />
-<form method="post" action="${save}">
+<c:url var="context" value="/person/" />
+<form method="post" action="${context}save">
 <table>
     <thead>
         <tr>
@@ -40,14 +40,15 @@
             <td>${person.lastName}</td>
             <td>${person.email}</td>
             <td>${person.birthDate}</td>
-            <td>Modifier</td>
-            <td>Supprimer</td>
+            <td><a href="" name="modify">Modifier</a></td>
+            <td><a href="${context}delete/${person.id}" name="delete">Supprimer</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 </form>
-<a href="http://localhost:8080/Gradle___a3devjavaee___a3devjavaee_1_0_SNAPSHOT_war__exploded_/bankaccount"> <input type="button" value="Comptes Bancaires"></a>
 <a href="http://localhost:8080/Gradle___a3devjavaee___a3devjavaee_1_0_SNAPSHOT_war__exploded_/"> <input type="button" value="Accueil"></a>
+<a href="http://localhost:8080/Gradle___a3devjavaee___a3devjavaee_1_0_SNAPSHOT_war__exploded_/bankaccount"> <input type="button" value="Comptes Bancaires"></a>
+<a href="http://localhost:8080/Gradle___a3devjavaee___a3devjavaee_1_0_SNAPSHOT_war__exploded_/transfer"> <input type="button" value="Virement"> </a>
 </body>
 </html>

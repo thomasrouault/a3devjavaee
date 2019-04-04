@@ -15,8 +15,8 @@ import java.math.BigDecimal;
 import java.time.*;
 import java.util.*;
 
-@WebServlet("/bankaccount/*")
-public class BankAccountServlet extends HttpServlet {
+@WebServlet("/transfer/*")
+public class TransferServlet extends HttpServlet {
 
     @Inject
     private BankAccountRepository bankaccountrepository;
@@ -27,15 +27,20 @@ public class BankAccountServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getMethod().equalsIgnoreCase("post")){
-            BankAccount account = new BankAccount();
 
-            BigDecimal balance = new BigDecimal(request.getParameter("balance"));
-            Integer id = Integer.parseInt(request.getParameter("owner"));
-            Person owner = personrepository.findById(id);
+            BigDecimal ammount = new BigDecimal(request.getParameter("ammount"));
 
-            account.setBalance(balance);
-            account.setOwner(owner);
-            bankaccountrepository.save(account);
+            Integer idDebit = Integer.parseInt(request.getParameter("debitAccount"));
+            Integer idCredit = Integer.parseInt(request.getParameter("creditAccount"));
+
+            BankAccount debitAccount = bankaccountrepository.findById(idDebit);
+            BankAccount creditAccount = bankaccountrepository.findById(idCredit);
+
+            debitAccount.setBalance(debitAccount.getBalance().subtract(ammount));
+            creditAccount.setBalance(creditAccount.getBalance().add(ammount));
+
+            bankaccountrepository.save(debitAccount);
+            bankaccountrepository.save(creditAccount);
         }
 
         List<BankAccount> accounts = bankaccountrepository.findAll();
@@ -44,7 +49,7 @@ public class BankAccountServlet extends HttpServlet {
         request.setAttribute("accounts", accounts);
         request.setAttribute("persons", persons);
 
-        request.getRequestDispatcher("/WEB-INF/views/bankaccount.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(request, response);
     }
 
 }
