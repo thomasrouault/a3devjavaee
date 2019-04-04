@@ -25,7 +25,7 @@ public class BankAccountServlet extends HttpServlet {
     private PersonRepository personrepository;
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         if (request.getMethod().equalsIgnoreCase("post")){
             BankAccount account = new BankAccount();
 
