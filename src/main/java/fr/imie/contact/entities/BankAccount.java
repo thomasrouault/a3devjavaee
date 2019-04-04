@@ -1,7 +1,7 @@
 package fr.imie.contact.entities;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.math.*;
 
 @Entity
 public class BankAccount {
@@ -11,15 +11,13 @@ public class BankAccount {
 
     private BigDecimal balance;
 
-    //private Person owner;
+    @ManyToOne @JoinColumn(nullable = false)
+    private Person owner;
+
+    // region // constructors getters setters
 
     public BankAccount() {
     }
-
-    /*public BankAccount(BigDecimal balance, Person owner) {
-        this.balance = balance;
-        this.owner = owner;
-    }*/
 
     public BigDecimal getBalance() {
         return balance;
@@ -29,11 +27,14 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    /*public Person getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
     public void setOwner(Person owner) {
         this.owner = owner;
-    }*/
+    }
+
+    // endregion
+
 }

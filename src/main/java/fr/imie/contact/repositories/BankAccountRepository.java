@@ -1,15 +1,23 @@
 package fr.imie.contact.repositories;
 
-import fr.imie.contact.entities.BankAccount;
+import fr.imie.contact.entities.*;
 
-import java.util.List;
+import javax.ejb.*;
+import javax.persistence.*;
+import java.util.*;
 
+@Stateless
 public class BankAccountRepository {
 
+    @PersistenceContext
+    EntityManager em;
+
     public List<BankAccount> findAll() {
-        return null;
+        return em.createQuery("select ba from BankAccount ba").getResultList();
     }
 
-    public void save(BankAccount bankAccount) {
+    public void save(BankAccount entity) {
+        em.persist(entity);
     }
+
 }

@@ -1,28 +1,22 @@
 package fr.imie.contact.repositories;
 
-import fr.imie.contact.entities.BankAccount;
-import fr.imie.contact.entities.Person;
+import fr.imie.contact.entities.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class BankAccountRepositoryMock extends BankAccountRepository{
+public class BankAccountRepositoryMock extends BankAccountRepository {
 
-    private List bankaccounts = new ArrayList();
+    private List<BankAccount> bankAccounts = new ArrayList();
 
     public BankAccountRepositoryMock() {
-        //save(new BankAccount(new BigDecimal (5001)  , new Person("Jean", "Michel")));
-        //save(new BankAccount(new BigDecimal (12547), new Person("Arthur", "Luke")));
-        //save(new BankAccount(5001, ("Jean", "Alain")));
     }
 
     public List<BankAccount> findAll() {
-        return bankaccounts;
+        return bankAccounts;
     }
 
-    public void save(BankAccount bankaccount) {
-        bankaccounts.add(bankaccount);
+    public void save(BankAccount entity) {
+        bankAccounts.add(entity);
     }
 
 }

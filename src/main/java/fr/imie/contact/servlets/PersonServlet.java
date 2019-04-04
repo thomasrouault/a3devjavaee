@@ -1,6 +1,7 @@
 package fr.imie.contact.servlets;
 
 import fr.imie.contact.DateUtils;
+import fr.imie.contact.entities.BankAccount;
 import fr.imie.contact.entities.Person;
 import fr.imie.contact.repositories.PersonRepository;
 
@@ -32,6 +33,7 @@ public class PersonServlet extends HttpServlet {
             String text = request.getParameter("birthDate");
             LocalDate date = DateUtils.toLocalDate(text);
             person.setBirthDate(date);
+
 
             repository.save(person);
         }

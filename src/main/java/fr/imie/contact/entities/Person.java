@@ -2,6 +2,8 @@ package fr.imie.contact.entities;
 
 import javax.persistence.*;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Person {
@@ -16,6 +18,9 @@ public class Person {
     private String email;
 
     private LocalDate birthDate;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
+    private List<BankAccount> accounts = new ArrayList<BankAccount>();
 
     public Person() {
     }
@@ -63,5 +68,13 @@ public class Person {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<BankAccount> getAccounts() {
+        return accounts;
+    }
+
+    public void addAccounts(BankAccount account) {
+        this.accounts.add(account);
     }
 }
