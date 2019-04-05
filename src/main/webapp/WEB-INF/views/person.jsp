@@ -41,7 +41,6 @@
             <td><input name="birthDate" value="${person.birthDate}"></td>
             <td><input type="submit" /></td>
             <td><a href="${context}" name="modify">Annuler</a></td>
-            <td><a href="${context}delete/${person.id}" name="delete">Supprimer</a></td>
         </tr>
         </c:if>
         <c:if test="${person.id ne id}">
