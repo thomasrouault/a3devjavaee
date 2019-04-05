@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <title></title>
@@ -38,7 +39,9 @@
             <td><input name="firstName" value="${person.firstName}"></td>
             <td><input name="lastName" value="${person.lastName}"></td>
             <td><input name="email" value="${person.email}"></td>
-            <td><input name="birthDate" value="${person.birthDate}"></td>
+            <fmt:parseDate value="${person.birthDate}" pattern="yyyy-MM-dd" var="parsedDate" type="date"/>
+            <fmt:formatDate value="${parsedDate}" type="date" pattern="dd/MM/yyyy" var="goodDate"/>
+            <td><input name="birthDate" value="${goodDate}"></td>
             <td><input type="submit" /></td>
             <td><a href="${context}" name="modify">Annuler</a></td>
         </tr>
@@ -51,7 +54,7 @@
                 <td>${person.email}</td>
                 <td>${person.birthDate}</td>
                 <td><a href="${context}edit/${person.id}" name="edit">Modifier</a></td>
-                <td><a href="${context}delete/${person.id}" name="delete">Supprimer</a></td>
+                <td><a href="${context}delete/${person.id}" onclick="return confirm('Etes-vous sur de vouloir supprimer ?')">Supprimer</a></td>
             </tr>
         </c:if>
     </c:forEach>
