@@ -50,7 +50,7 @@
                 <td>${person.lastName}</td>
                 <td>${person.email}</td>
                 <td>${person.birthDate}</td>
-                <td><a href="${context}edit/${person.id}" name="edit">Modifier</a></td>
+                <td><button onclick="edit(event);"></button>Modifier</td>
                 <td><a href="${context}delete/${person.id}" name="delete">Supprimer</a></td>
             </tr>
         </c:if>
@@ -58,6 +58,12 @@
     </tbody>
 </table>
 </form>
+<script>
+    function edit(event) {
+        event.preventDefault();
+        console.log(event.target);
+    }
+</script>
 <a href="http://localhost:8080/Gradle___a3devjavaee___a3devjavaee_1_0_SNAPSHOT_war__exploded_/"> <input type="button" value="Accueil"></a>
 <a href="http://localhost:8080/Gradle___a3devjavaee___a3devjavaee_1_0_SNAPSHOT_war__exploded_/bankaccount"> <input type="button" value="Comptes Bancaires"></a>
 <a href="http://localhost:8080/Gradle___a3devjavaee___a3devjavaee_1_0_SNAPSHOT_war__exploded_/transfer"> <input type="button" value="Virement"> </a>
