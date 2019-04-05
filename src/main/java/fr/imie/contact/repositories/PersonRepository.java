@@ -17,7 +17,11 @@ public class PersonRepository {
     }
 
     public void save(Person person) {
-        em.persist(person);
+        if (person.getId() == null) {
+            em.persist(person);
+        }else {
+            em.merge(person);
+        }
     }
 
     public Person findById(Integer id) {
@@ -28,4 +32,5 @@ public class PersonRepository {
         Person person = findById(id);
         em.remove(person);
     }
+
 }

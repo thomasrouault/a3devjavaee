@@ -25,6 +25,7 @@
         </tr>
     </thead>
     <tbody>
+    <c:if test="${id eq null}">
         <tr>
             <td>*</td>
             <td><input name="firstName" /></td>
@@ -33,16 +34,34 @@
             <td><input name="birthDate" /></td>
             <td><input type="submit" /></td>
         </tr>
+    </c:if>
+    <c:if test="${person.id ne id}">
+    </c:if>
+
     <c:forEach var="person" items="${persons}" >
+        <c:if test="${person.id eq id}">
         <tr>
-            <td>${person.id}</td>
-            <td>${person.firstName}</td>
-            <td>${person.lastName}</td>
-            <td>${person.email}</td>
-            <td>${person.birthDate}</td>
-            <td><a href="" name="modify">Modifier</a></td>
+            <td><input type="hidden" name="id" value="${person.id}"></td>
+            <td><input name="firstName" value="${person.firstName}"></td>
+            <td><input name="lastName" value="${person.lastName}"></td>
+            <td><input name="email" value="${person.email}"></td>
+            <td><input name="birthDate" value="${person.birthDate}"></td>
+            <td><input type="submit" /></td>
+            <td><a href="${context}" name="modify">Annuler</a></td>
             <td><a href="${context}delete/${person.id}" name="delete">Supprimer</a></td>
         </tr>
+        </c:if>
+        <c:if test="${person.id ne id}">
+        <tr>
+                <td>${person.id}</td>
+                <td>${person.firstName}</td>
+                <td>${person.lastName}</td>
+                <td>${person.email}</td>
+                <td>${person.birthDate}</td>
+                <td><a href="${context}edit/${person.id}" name="modify">Modifier</a></td>
+                <td><a href="${context}delete/${person.id}" name="delete">Supprimer</a></td>
+            </tr>
+        </c:if>
     </c:forEach>
     </tbody>
 </table>
