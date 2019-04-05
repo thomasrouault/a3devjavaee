@@ -1,7 +1,6 @@
 package fr.imie.contact.servlets;
 
 import fr.imie.contact.DateUtils;
-import fr.imie.contact.entities.BankAccount;
 import fr.imie.contact.entities.Person;
 import fr.imie.contact.repositories.PersonRepository;
 
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,11 +23,9 @@ public class PersonServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
+        Person person = new Person();
 
         if (request.getMethod().equalsIgnoreCase("post")){
-
-            Person person = new Person();
 
             if(request.getParameter("id") != null) {
                 person =repository.findById(Integer.parseInt(request.getParameter("id")));
