@@ -51,7 +51,7 @@
                 <td>${person.lastName}</td>
                 <td>${person.email}</td>
                 <td>${person.birthDate}</td>
-                <td><a href="${context}edit/${person.id}" name="modify">Modifier</a></td>
+                <td><a href="${context}edit/${person.id}" name="edit">Modifier</a></td>
                 <td><a href="${context}delete/${person.id}" name="delete">Supprimer</a></td>
             </tr>
         </c:if>
